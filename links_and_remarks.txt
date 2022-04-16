@@ -11,4 +11,9 @@ https://pymongo.readthedocs.io/en/stable/examples/gridfs.html
 https://dev.to/thenishant/store-images-in-mongodb-via-python-2g73
 read file from mongodb
 https://psabhay.com/posts/mongodb/mongodb-gridfs-using-python/
+https://ishmeet1995.medium.com/how-to-create-restful-crud-api-with-python-flask-mongodb-and-docker-8f6ccb73c5bc
 
+
+
+ pip install flask
+ pip install pymongo

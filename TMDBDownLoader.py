@@ -46,8 +46,12 @@ class TMDBDownloader:
         return
 
 
+    def search_and_download(self,movie_name):
+        imdb_id = self.getIMDBID(movie_name)
+        self.getPoster(imdb_id, movie_name)
+
+
 if __name__ == "__main__":
     TMDBconn = TMDBDownloader()
     movie_name="spiderman"
-    imdb_id = TMDBconn.getIMDBID(movie_name)
-    response = TMDBconn.getPoster(imdb_id,movie_name)
+    TMDBconn.search_and_download(movie_name)
