@@ -4,5 +4,11 @@ https://bin.re/blog/tutorial-download-posters-with-the-movie-database-api-in-pyt
 2. ask for api key
 https://sd18spring.github.io/notes/storing-api-keys
 https://www.freecodecamp.org/news/how-to-securely-store-api-keys-4ff3ea19ebda/
+search imdb movie code
 https://www.geeksforgeeks.org/python-imdbpy-searching-a-movie/
+saving file in mongodb:(using gridfs)
+https://pymongo.readthedocs.io/en/stable/examples/gridfs.html
+https://dev.to/thenishant/store-images-in-mongodb-via-python-2g73
+read file from mongodb
+https://psabhay.com/posts/mongodb/mongodb-gridfs-using-python/
 
