@@ -55,8 +55,7 @@ class MongoDBDAL:
         obj_id=self.search_image_file_id_by_name((movie_name))
         self.fs.delete(obj_id)
         output = {'Status': 'Successfully Deleted' if obj_id  else "Nothing was Deleted."}
-
-        return
+        return output
     def update_image_file_meta_data(self,movie_name,key_to_update,val_to_update):
         """
         updtae metadata for image
