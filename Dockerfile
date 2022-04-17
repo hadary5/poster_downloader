@@ -14,8 +14,12 @@ COPY app.py /app
 COPY MongoDBDAL.py /app
 COPY TMDBDownLoader.py /app
 COPY config.py /app
+RUN mkdir -p /app/templates
+RUN mkdir -p /app/temp_content
+COPY ./Templates/* /app/templates
 # Exposing an internal port
 EXPOSE 5001
+EXPOSE 5000
 # Step 4 set default commands
  # Default command
 ENTRYPOINT [ "python3" ]

@@ -7,7 +7,7 @@ from flask import Flask, request, json, Response, render_template, make_response
 import logging as log
 
 app = Flask(__name__)
-mdb = MongoDBDAL("localhost", 27017, "movies")
+mdb = MongoDBDAL("localhost", 5000, "movies")
 TMDB = TMDBDownloader()
 #    TMDB.search_and_download(movie_name)
 

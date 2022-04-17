@@ -1,7 +1,14 @@
 version: "3"
 services:
     mymongo_1:
-        image: "mongo"
+        image: mongo:latest
+        ports:
+            - "5000:27017"
+        hostname: test_mongodb
+        environment:
+            - MONGO_INITDB_DATABASE=movies
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=pass
 
     myreader:
         build: .
@@ -9,3 +16,5 @@ services:
             - mymongo_1
         ports:
             - "5001:5001"
+        links:
+            - mymongo_1
