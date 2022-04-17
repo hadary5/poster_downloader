@@ -1,6 +1,7 @@
 import os
 import pymongo
 import gridfs
+import config
 
 class MongoDBDAL:
     def __init__(self, ip, port, db_name):
@@ -38,7 +39,7 @@ class MongoDBDAL:
 if __name__ == "__main__":
     mdb = MongoDBDAL("localhost", 27017, "movies")
 
-    mdb.write_image_file(content_temp_path + "poster_spiderman.jpeg", "spiderman", "tt0145487")
+    mdb.write_image_file(config.content_temp_path + "poster_spiderman.jpeg", "spiderman", "tt0145487")
     mdb.read_image_file("spiderman")
     mdb.update_image_file_meta_data("spiderman","imdb_code","no no no no no")
  #   mdb.del_image_file("spiderman")

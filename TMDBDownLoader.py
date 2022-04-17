@@ -43,12 +43,14 @@ class TMDBDownloader:
         with open(self.content_temp_path+filename, 'wb') as w:
             w.write(r.content)
 
-        return
+        return filename
 
 
     def search_and_download(self,movie_name):
+        """ returns tuple imdb_id,file_name"""
         imdb_id = self.getIMDBID(movie_name)
-        self.getPoster(imdb_id, movie_name)
+        file_name=self.getPoster(imdb_id, movie_name)
+        return (imdb_id, file_name)
 
 
 if __name__ == "__main__":
