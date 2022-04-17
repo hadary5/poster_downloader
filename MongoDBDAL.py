@@ -11,7 +11,7 @@ class MongoDBDAL:
     """
     def __init__(self, ip, port, db_name):
         """"creating client and gridfs object"""
-        self.client = pymongo.MongoClient(ip, port)
+        self.client= pymongo.MongoClient(ip, port)
         self.database = self.client[db_name]
         # Create an object of GridFs for the above database.
         self.fs = gridfs.GridFS(self.database)
@@ -26,8 +26,8 @@ class MongoDBDAL:
         head, tail = os.path.split(file_name)
         with open(file, 'rb') as f:
             current_image = f.read()
-        self.fs.put(current_image, file_name=tail, movie_name=movie_name, imdb_code=imdb_code)
-
+        mongo_obj_id=self.fs.put(current_image, file_name=tail, movie_name=movie_name, imdb_code=imdb_code)
+        return mongo_obj_id
     def read_image_file(self, movie_name):
         """
         search and read file from db
@@ -36,6 +36,7 @@ class MongoDBDAL:
         file = self.fs.find_one({"movie_name": movie_name}).read()
         with open(movie_name + ".jpeg", 'wb') as w:
             w.write(file)
+        return file
 
     def search_image_file_id_by_name(self, movie_name):
         """
@@ -51,8 +52,11 @@ class MongoDBDAL:
         :param movie_name:
         :return:
         """
-        self.fs.delete(self.search_image_file_id_by_name((movie_name)))
+        obj_id=self.search_image_file_id_by_name((movie_name))
+        self.fs.delete(obj_id)
+        output = {'Status': 'Successfully Deleted' if obj_id  else "Nothing was Deleted."}
 
+        return
     def update_image_file_meta_data(self,movie_name,key_to_update,val_to_update):
         """
         updtae metadata for image
@@ -65,7 +69,9 @@ class MongoDBDAL:
         mycol = self.database["fs.files"]
         myquery = {"_id": file_id}
         new_values = {"$set": {key_to_update: val_to_update}}
-        mycol.update_one(myquery, new_values)
+        db_update_response=mycol.update_one(myquery, new_values)
+        output = {'Status': 'Successfully Updated' if db_update_response.modified_count > 0 else "Nothing was updated."}
+        return output
 
 
 if __name__ == "__main__":
@@ -74,7 +80,7 @@ if __name__ == "__main__":
     """
     mdb = MongoDBDAL("localhost", 27017, "movies")
 
-    mdb.write_image_file(config.content_temp_path + "poster_spiderman.jpeg", "spiderman", "tt0145487")
-    mdb.read_image_file("spiderman")
-    mdb.update_image_file_meta_data("spiderman","imdb_code","no no no no no")
- #   mdb.del_image_file("spiderman")
+    mdb.write_image_file(config.content_temp_path + "poster_star wars.jpeg", "spiderman", "tt0145487")
+    mdb.read_image_file("star wars")
+    mdb.update_image_file_meta_data("star wars","imdb_code","no no no no no")
+    mdb.del_image_file("spiderman")

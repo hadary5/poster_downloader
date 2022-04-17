@@ -33,5 +33,16 @@ def load_insert_item_html():
         return render_template('new_form.html', data=movie_name)
     return render_template('new_form.html')
 
+########### mongo crud api ###############
+@app.route('/mongo/<search_string>', methods=['GET'])
+def read(search_string):
+    mdb.read_image_file(search_string)
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
