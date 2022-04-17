@@ -15,6 +15,5 @@ COPY TMDBDownLoader.py /app
 EXPOSE 5001
 # Step 4 set default commands
 ENTRYPOINT [ "python3" ] # Default command
-
 # These commands will be replaced if user provides any command by himself
 CMD ["app.py"]
