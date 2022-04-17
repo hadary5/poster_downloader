@@ -17,3 +17,4 @@ https://ishmeet1995.medium.com/how-to-create-restful-crud-api-with-python-flask-
 
  pip install flask
  pip install pymongo
+pip freeze > requirements.txt
