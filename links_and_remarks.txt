@@ -1,6 +1,7 @@
 connecting to TMDB using API and API key
 https://bin.re/blog/tutorial-download-posters-with-the-movie-database-api-in-python/
-1. open account in tmdb
+1. open achttps://dev.to/thenishant/store-images-in-mongodb-via-python-2g73
+count in tmdb
 2. ask for api key
 https://sd18spring.github.io/notes/storing-api-keys
 https://www.freecodecamp.org/news/how-to-securely-store-api-keys-4ff3ea19ebda/
@@ -8,12 +9,13 @@ search imdb movie code
 https://www.geeksforgeeks.org/python-imdbpy-searching-a-movie/
 saving file in mongodb:(using gridfs)
 https://pymongo.readthedocs.io/en/stable/examples/gridfs.html
-https://dev.to/thenishant/store-images-in-mongodb-via-python-2g73
 read file from mongodb
 https://psabhay.com/posts/mongodb/mongodb-gridfs-using-python/
 https://ishmeet1995.medium.com/how-to-create-restful-crud-api-with-python-flask-mongodb-and-docker-8f6ccb73c5bc
 ##########################################
 docker
+pip freeze > requirements.txt
+
 https://www.docker.com/get-started/
 https://rogerdudler.github.io/git-guide/
 
@@ -23,7 +25,3 @@ https://roytuts.com/python-flask-rest-api-mongodb-crud-example/
 https://pythonbasics.org/flask-mongodb/
 
 ##########################################
-
- pip install flask
- pip install pymongo
-pip freeze > requirements.txt

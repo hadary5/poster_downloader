@@ -3,12 +3,12 @@ services:
     app:
         build: .
         depends_on:
-            - db
+            - db_host
         ports:
             - "5001:5001"
         links:
-            - db
-    db:
+            - db_host
+    db_host:
         image: mongo:latest
         ports:
             - "27017:27017"
