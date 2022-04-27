@@ -1,12 +1,8 @@
 from base64 import b64encode
-
 from MongoDBDAL import MongoDBDAL
 import config
 from TMDBDownLoader import TMDBDownloader
-
 from flask import Flask, request, json, Response, render_template, make_response
-#from pymongo import MongoClient
-import logging as log
 
 app = Flask(__name__)
 ##when connecting from docker use host name from docker compose
@@ -15,16 +11,13 @@ mdb = MongoDBDAL("db_host", 27017, "movies")
 TMDB = TMDBDownloader()
 #    TMDB.search_and_download(movie_name)
 
-
 @app.route('/')
 def index():
     return '<h1>Hello  Class</h1>'
 
-
 @app.route('/user/<name>')
 def user(name):
     return f'<h1>Hello, {name}!</h1>'
-
 
 @app.route('/search', methods=['GET', 'POST'])  # GET REQUEST
 def load_insert_item_html():
@@ -46,8 +39,6 @@ def read(search_string):
     image = b64encode(binary_file).decode("utf-8")
     src="data:image/gif;base64,"+image
     return f'<img src={src}>'
-
-
 
 @app.route('/mongo/<search_string>', methods=['DELETE'])
 def mongo_delete(search_string):
