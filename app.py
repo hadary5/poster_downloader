@@ -1,3 +1,5 @@
+from base64 import b64encode
+
 from MongoDBDAL import MongoDBDAL
 import config
 from TMDBDownLoader import TMDBDownloader
@@ -30,8 +32,9 @@ def load_insert_item_html():
         movie_name = request.form['name']
         imdb_id, file_name=TMDB.search_and_download(movie_name)
         mdb.write_image_file(config.content_temp_path + file_name,movie_name,imdb_id)
-        return render_template('new_form.html', data=movie_name)
+        return render_template("image_response.html", user_image=file_name)
     return render_template('new_form.html')
+# f'<img src="'+"./temp_content/"+file_name+  '">'
 
 ########### mongo crud api ###############
 @app.route('/mongo/<search_string>', methods=['GET'])
@@ -40,10 +43,13 @@ def read(search_string):
     binary_file=mdb.read_image_file(search_string)
     #file_name="./"+search_string+".jpeg"
     #return render_template("image_response.html", user_image=file_name)
-    response = make_response(binary_file)
-    response.headers.set('Content-Type', 'image/jpeg')
-    response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % search_string)
-    return response
+    #response = make_response(binary_file)
+    #response.headers.set('Content-Type', 'image/jpeg')
+    #response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % search_string)
+    #image = b64encode(binary_file).decode("utf-8")
+    #return binary_file
+    return f'<img src="{{binary_file}}">'
+    #return response
 
 
 @app.route('/mongo/<search_string>', methods=['DELETE'])

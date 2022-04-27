@@ -6,11 +6,8 @@ services:
             - db_host
         ports:
             - "5001:5001"
-        links:
-            - db_host
+
     db_host:
         image: mongo:latest
         ports:
             - "27017:27017"
-        environment:
-            - MONGO_INITDB_DATABASE=movies
